@@ -1,16 +1,11 @@
-FROM python:3.10
+FROM python:3.11-slim
 
 WORKDIR /usr/src/app
 
 COPY . .
 
 RUN apt update -y && \
-    pip install --trusted-host pypi.python.org -r requirements.txt
-
-ENV DB_USERNAME=myuser
-ENV DB_PASSWORD=mypassword
-ENV DB_PORT=5433
-ENV DB_NAME=mydatabase
+    pip install --no-cache-dir -r requirements.txt
 
 COPY . .
 
