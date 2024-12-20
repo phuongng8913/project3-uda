@@ -1,4 +1,4 @@
-FROM --platform=linux/amd64 public.ecr.aws/docker/library/python:3.10-slim-buster as build
+FROM --platform=linux/arm64 python:3.11-slim
 
 WORKDIR /usr/src/app
 
