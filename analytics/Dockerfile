@@ -1,11 +1,11 @@
-FROM public.ecr.aws/docker/library/python:3.10-slim-buster as build
+FROM python:3.10
 
 WORKDIR /usr/src/app
 
 COPY . .
 
 RUN apt update -y && \
-    pip install --no-cache-dir -r requirements.txt
+    pip install --trusted-host pypi.python.org -r requirements.txt
 
 ENV DB_USERNAME=myuser
 ENV DB_PASSWORD=mypassword
