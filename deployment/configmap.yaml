@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name:  project3-configmap
+data:
+  DB_USERNAME: myuser
+  DB_NAME: mydatabase
+  DB_HOST: postgresql-service
+  DB_PORT: '5432'
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: project3-secret
+type: Opaque
+data:
+  DB_PASSWORD: bXlwYXNzd29yZA==
