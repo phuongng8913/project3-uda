@@ -1,14 +1,19 @@
 FROM python:3.10
 
-WORKDIR /usr/src/app
+USER root
+ARG DB_USERNAME=$DB_USERNAME
+ARG DB_PASSWORD=$DB_PASSWORD
+
+USER root
+WORKDIR /src
 
 COPY . .
 
 RUN apt update -y && \
-    pip install --no-cache-dir -r requirements.txt
+    pip install -r requirements.txt
 
 COPY . .
 
 EXPOSE 5153
 
-ENTRYPOINT python analytics/app.py
+CMD python app.py
