@@ -1,11 +1,14 @@
-FROM python:3.10
+FROM python:3.11-slim
 
-WORKDIR /app
+WORKDIR /usr/src/app
 
-COPY . /app
+COPY . .
 
-RUN pip install --trusted-host pypi.python.org -r requirements.txt
+RUN apt update -y && \
+    pip install --no-cache-dir -r requirements.txt
+
+COPY . .
 
 EXPOSE 5153
 
-CMD ["python", "app.py"]
+CMD [ "python", "./app.py" ]
